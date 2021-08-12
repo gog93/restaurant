@@ -27,7 +27,7 @@ public class AddMenuServlet extends HttpServlet {
                 .user(users)
                 .build());
         req.getSession().setAttribute("msg","menu was added");
-        resp.sendRedirect("/addMenu");
+        resp.sendRedirect("/manegerhome");
 
     }
 }

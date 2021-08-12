@@ -12,6 +12,8 @@
 </head>
 <body>
 <a href="bookATable.jsp">bookATable</a>
-
+<form action="/logout" method="get">
+    <a href="/">logOut</a>
+</form>
 </body>
 </html>
