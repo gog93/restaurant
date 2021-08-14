@@ -55,8 +55,8 @@ public class BookAtableManager {
                 BookATable book = BookATable.builder()
                         .id(resultSet.getInt(1))
                         .number(resultSet.getString(2))
-                        .date(resultSet.getDate(5))
-                        .user(userManager.getUserById(resultSet.getInt(7)))
+                        .date(resultSet.getDate(3))
+                        .user(userManager.getUserById(resultSet.getInt(4)))
                         .build();
                 result.add(book);
             }

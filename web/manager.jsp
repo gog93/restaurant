@@ -51,21 +51,21 @@
     </div>
     <br>
 
-    <div>BOOKATABLE<br>
-        <table border="1">
-            <tr>
-                <th>number</th>
-                <th>date</th>
-                <th>userId</th>
-            </tr>
-            <% for (BookATable bookATable:bookATables){%>
-            <tr>
-                <td><%=bookATable.getNumber()%></td>
-                <td><%=bookATable.getDate()%></td>
-                <td><%=bookATable.getUser().getId()%></td>
-            </tr>
-            <%}%>
-        </table>
+<%--    <div>BOOKATABLE<br>--%>
+<%--        <table border="1">--%>
+<%--            <tr>--%>
+<%--                <th>number</th>--%>
+<%--                <th>date</th>--%>
+<%--                <th>userId</th>--%>
+<%--            </tr>--%>
+<%--            <% for (BookATable bookATable:bookATables){%>--%>
+<%--            <tr>--%>
+<%--                <td><%=bookATable.getNumber()%></td>--%>
+<%--                <td><%=bookATable.getDate()%></td>--%>
+<%--                <td><%=bookATable.getUser().getId()%></td>--%>
+<%--            </tr>--%>
+<%--            <%}%>--%>
+<%--        </table>--%>
 
 
 

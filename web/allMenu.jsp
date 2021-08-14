@@ -1,8 +1,9 @@
-<%--
+<%@ page import="model.Menu" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: on-off
-  Date: 09.08.2021
-  Time: 23:40
+  Date: 13.08.2021
+  Time: 0:20
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,11 +12,17 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/addMenu" method="post">
-    <h1>add Menu</h1>
-    name<input type="text" name="name">
-    description<input type="text" name="description">
-    <input type="submit" name="addMenu">
+
+<%List<Menu> menu=(List<Menu>) request.getAttribute("menu");%>
+<div>
+
+    name:
+    <textarea>description</textarea>
+
+</div>
+
+
+
 </form>
 </body>
 </html>
