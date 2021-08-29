@@ -22,7 +22,7 @@ public class UserHomeServlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        User users=new User();
+        User users = new User();
         BookAtableManager bookATableManager = new BookAtableManager();
         MenuManager menuManager = new MenuManager();
         BookATable bookATable = new BookATable();

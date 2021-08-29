@@ -15,7 +15,7 @@
     number: <input type="number" name="number"><br>
     date: <input type="date" name="date">
     <input type="submit" value="bookATable">
-    </form>
+</form>
 
 </body>
 </html>

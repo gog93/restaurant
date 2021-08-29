@@ -15,22 +15,22 @@ import java.io.IOException;
 public class RegisterServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserManager userManager=new UserManager();
+        UserManager userManager = new UserManager();
 
         String name = req.getParameter("name");
         String surname = req.getParameter("surname");
-        String email=req.getParameter("email");
-        String password=req.getParameter("password");
-        String repassword=req.getParameter("re-password");
+        String email = req.getParameter("email");
+        String password = req.getParameter("password");
+        String repassword = req.getParameter("re-password");
 
-            User user=User.builder()
-                    .name(name)
-                    .surname(surname)
-                    .email(email)
-                    .password(password)
-                    .build();
-            userManager.addUser(user);
-            req.getSession().setAttribute("msg","user was register successfully");
-            resp.sendRedirect("/");
-        }
+        User user = User.builder()
+                .name(name)
+                .surname(surname)
+                .email(email)
+                .password(password)
+                .build();
+        userManager.addUser(user);
+        req.getSession().setAttribute("msg", "user was register successfully");
+        resp.sendRedirect("/");
+    }
 }

@@ -5,11 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnectionProvider {
-    private static DBConnectionProvider instance=new DBConnectionProvider();
+    private static DBConnectionProvider instance = new DBConnectionProvider();
     private static final String DB_URL = "jdbc:mysql://localhost:3306/restaurant?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String DB_USERNAME = "root";
     private static final String DB_PASSWORD = "root";
-    private DBConnectionProvider(){
+
+    private DBConnectionProvider() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -17,12 +18,14 @@ public class DBConnectionProvider {
         }
 
     }
-    public static DBConnectionProvider getInstance(){
+
+    public static DBConnectionProvider getInstance() {
         return instance;
     }
-    public Connection getConnection(){
+
+    public Connection getConnection() {
         try {
-            return DriverManager.getConnection(DB_URL,DB_USERNAME, DB_PASSWORD);
+            return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

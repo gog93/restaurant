@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookAtableManager {
-    private Connection connection= DBConnectionProvider.getInstance().getConnection();
+    private Connection connection = DBConnectionProvider.getInstance().getConnection();
     private UserManager userManager = new UserManager();
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
@@ -17,7 +17,7 @@ public class BookAtableManager {
         String query = "INSERT INTO `book_a_table` (`number`,`date`,`user_id`) " + "VALUES(?,?,?);";
         try {
 
-               PreparedStatement pStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             pStatement.setString(1, bookATable.getNumber());
             pStatement.setString(2, sdf.format(bookATable.getDate()));
@@ -32,6 +32,7 @@ public class BookAtableManager {
             throwables.printStackTrace();
         }
     }
+
     public void updateBook(BookATable bookATable) {
         try {
             Statement statement = connection.createStatement();

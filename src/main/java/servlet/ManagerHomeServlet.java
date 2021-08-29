@@ -27,13 +27,13 @@ public class ManagerHomeServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
         MenuManager menuManager = new MenuManager();
         UserManager userManager = new UserManager();
-        User users=new User();
-        BookAtableManager bookAtableManager=new BookAtableManager();
+        User users = new User();
+        BookAtableManager bookAtableManager = new BookAtableManager();
         List<User> getAllUser = userManager.getUsers();
-//        List<BookATable> getAllBookATable = bookAtableManager.getBookATable();
-        List<Menu> getAllMenu=menuManager.getMenu();
+        List<BookATable> getAllBookATable = bookAtableManager.getBookATable();
+        List<Menu> getAllMenu = menuManager.getMenu();
         req.setAttribute("user", getAllUser);
-//        req.setAttribute("book_a_Table", getAllBookATable);
+        req.setAttribute("book_a_Table", getAllBookATable);
         req.setAttribute("menu", getAllMenu);
         req.getRequestDispatcher("manager.jsp").forward(req, resp);
     }

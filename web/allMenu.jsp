@@ -13,14 +13,16 @@
 </head>
 <body>
 
-<%List<Menu> menu=(List<Menu>) request.getAttribute("menu");%>
-<div>
+<%List<Menu> menu = (List<Menu>) request.getAttribute("menu");%>
+<form action="/addMenu" method="get">
+    <div>
 
-    name:
-    <textarea>description</textarea>
 
-</div>
+        name:
+        <textarea></textarea>
 
+
+    </div>
 
 
 </form>

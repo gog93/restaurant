@@ -26,11 +26,11 @@ public class BookATableServlet extends HttpServlet {
         User user = (User) req.getSession().getAttribute("user");
         BookAtableManager bookAtableManager = new BookAtableManager();
         String number = (req.getParameter("number"));
-        String date=req.getParameter("date");
+        String date = req.getParameter("date");
 
 
         try {
-            BookATable  bookATable = BookATable.builder()
+            BookATable bookATable = BookATable.builder()
                     .number(number)
                     .date(sdf.parse(date))
                     .user(user)
@@ -41,12 +41,12 @@ public class BookATableServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        if (user == null){
-            req.getSession().setAttribute("msg","please login");
-        resp.sendRedirect("/login");
-    }else{
-        req.getSession().setAttribute("msg", "book was added");
-        resp.sendRedirect("/");
-    }
+        if (user == null) {
+            req.getSession().setAttribute("msg", "please login");
+            resp.sendRedirect("/login");
+        } else {
+            req.getSession().setAttribute("msg", "book was added");
+            resp.sendRedirect("/");
+        }
     }
 }

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class MenuManager {
 
-    private Connection connection= DBConnectionProvider.getInstance().getConnection();
+    private Connection connection = DBConnectionProvider.getInstance().getConnection();
 
     public void addMenu(Menu menu) {
         String query = "INSERT INTO `menu` (`name`,`description`,`user_id`) " +
@@ -20,7 +20,7 @@ public class MenuManager {
 
             PreparedStatement pStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             pStatement.setString(1, menu.getName());
-            pStatement.setString(2,menu.getDescription());
+            pStatement.setString(2, menu.getDescription());
             pStatement.setInt(3, menu.getUser().getId());
             pStatement.executeUpdate();
             ResultSet generatedKeys = pStatement.getGeneratedKeys();

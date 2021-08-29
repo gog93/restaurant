@@ -17,8 +17,9 @@ public class AllMenuServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         MenuManager menuManager = new MenuManager();
-        Menu menu=new Menu();
-        List<Menu> getAllMenu=menuManager.getMenu();
+        Menu menu = new Menu();
+        List<Menu> getAllMenu = menuManager.getMenu();
         req.setAttribute("menu", getAllMenu);
-        req.getRequestDispatcher("allMenu.jsp");  }
+        req.getRequestDispatcher("allMenu.jsp");
+    }
 }

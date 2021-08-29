@@ -16,18 +16,18 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserManager userManager=new UserManager();
+        UserManager userManager = new UserManager();
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        User user = userManager.getUserByPasswordAndEmail( email, password);
+        User user = userManager.getUserByPasswordAndEmail(email, password);
         if (user == null) {
             req.getSession().setAttribute("msg", "wrong email or password ");
             resp.sendRedirect("login.jsp");
-        }else {
+        } else {
             req.getSession().setAttribute("user", user);
-            if  (user.getType()== UserType.MANAGER) {
+            if (user.getType() == UserType.RESTAURANT) {
                 resp.sendRedirect("/manegerhome");
-            }else{
+            } else {
                 resp.sendRedirect("/user");
             }
         }
