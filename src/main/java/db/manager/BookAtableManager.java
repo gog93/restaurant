@@ -1,4 +1,4 @@
-package manager;
+package db.manager;
 
 import db.DBConnectionProvider;
 import model.BookATable;
@@ -14,13 +14,14 @@ public class BookAtableManager {
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
     public void addBookATable(BookATable bookATable) {
-        String query = "INSERT INTO `book_a_table` (`number`,`date`,`user_id`) " + "VALUES(?,?);";
+        String query = "INSERT INTO `book_a_table` (`number`,`date`,`user_id`) " + "VALUES(?,?,?);";
         try {
 
             PreparedStatement pStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             pStatement.setString(1, bookATable.getNumber());
             pStatement.setString(2, sdf.format(bookATable.getDate()));
+            pStatement.setInt(3, bookATable.getUser().getId());
             pStatement.executeUpdate();
             ResultSet generatedKeys = pStatement.getGeneratedKeys();
             if (generatedKeys.next()) {

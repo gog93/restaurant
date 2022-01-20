@@ -16,7 +16,7 @@
 
 <body>
 
-<form action="/login" method="post">
+<form action="/login" method="get">
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
@@ -28,10 +28,12 @@
                         <form accept-charset="UTF-8" role="form">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="yourmail@example.com" name="email" type="text">
+                                    <input class="form-control" placeholder="yourmail@example.com" name="email"
+                                           type="text">
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="Password" name="password" type="password"
+                                           value="">
                                 </div>
                                 <div class="checkbox">
                                     <label>

@@ -1,9 +1,7 @@
-package manager;
+package db.manager;
 
 import db.DBConnectionProvider;
-import model.BookATable;
 import model.Menu;
-import model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,8 +12,8 @@ public class MenuManager {
     private Connection connection = DBConnectionProvider.getInstance().getConnection();
 
     public void addMenu(Menu menu) {
-        String query = "INSERT INTO `menu` (`name`,`description`) " +
-                "VALUES(?,?);";
+        String query = "INSERT INTO `menu` (`name`,`description`,`user_id`) " +
+                "VALUES(?,?,?);";
         try {
 
             PreparedStatement pStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -45,7 +43,7 @@ public class MenuManager {
     }
 
     public List<Menu> getMenu() {
-        String sql = "SELECT * from menu" ;
+        String sql = "SELECT * from menu";
         List<Menu> result = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();

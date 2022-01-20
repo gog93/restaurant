@@ -46,7 +46,7 @@ public class BookATableServlet extends HttpServlet {
             resp.sendRedirect("/login");
         } else {
             req.getSession().setAttribute("msg", "book was added");
-            resp.sendRedirect("/");
+            resp.sendRedirect("/user");
         }
     }
 }

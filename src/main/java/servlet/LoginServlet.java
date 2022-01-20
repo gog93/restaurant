@@ -15,7 +15,7 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
 
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserManager userManager = new UserManager();
         String email = req.getParameter("email");
         String password = req.getParameter("password");
@@ -25,8 +25,8 @@ public class LoginServlet extends HttpServlet {
             resp.sendRedirect("login.jsp");
         } else {
             req.getSession().setAttribute("user", user);
-            if (user.getType() == UserType.RESTAURANT) {
-                resp.sendRedirect("/manegerhome");
+            if (user.getUserType() == UserType.ADMIN) {
+                resp.sendRedirect("/managerHome");
             } else {
                 resp.sendRedirect("/user");
             }

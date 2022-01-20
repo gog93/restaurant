@@ -167,16 +167,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="email" class="cols-sm-2 control-label">Your Email</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="email" id="email"
-                                   placeholder="Enter your Email"/>
-                        </div>
-                    </div>
-                </div>
+
 
                 <div class="form-group">
                     <label for="surname" class="cols-sm-2 control-label">Surname</label>
@@ -188,7 +179,27 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="email" id="email"
+                                   placeholder="Enter your Email"/>
+                        </div>
+                    </div>
+                </div>
 
+<%--                <div class="form-group">--%>
+<%--                    <label for="userType" class="cols-sm-2 control-label">Your Email</label>--%>
+<%--                    <div class="cols-sm-10">--%>
+<%--                        <div class="input-group">--%>
+<%--                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>--%>
+<%--                            <input type="text" class="form-control" name="email" id="email"--%>
+<%--                                   placeholder="Enter your Email"/>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
                 <div class="form-group">
                     <label for="password" class="cols-sm-2 control-label">Password</label>
                     <div class="cols-sm-10">
@@ -200,16 +211,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input type="password" class="form-control" name="confirm" id="confirm"
-                                   placeholder="Confirm your Password"/>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="form-group ">
                     <input type="submit" target="_blank" type="button" id="button"

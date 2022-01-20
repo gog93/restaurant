@@ -17,14 +17,14 @@ import java.io.IOException;
 import java.net.HttpCookie;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/manegerhome")
+@WebServlet(urlPatterns = "/managerHome")
 public class ManagerHomeServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
         HttpSession session = req.getSession();
-        User user = (User) session.getAttribute("user");
+        User sessionUser = (User) session.getAttribute("user");
         MenuManager menuManager = new MenuManager();
         UserManager userManager = new UserManager();
         User users = new User();
@@ -33,8 +33,9 @@ public class ManagerHomeServlet extends HttpServlet {
         List<BookATable> getAllBookATable = bookAtableManager.getBookATable();
         List<Menu> getAllMenu = menuManager.getMenu();
         req.setAttribute("user", getAllUser);
-        req.setAttribute("book_a_Table", getAllBookATable);
+        req.setAttribute("bookATable", getAllBookATable);
         req.setAttribute("menu", getAllMenu);
+        req.setAttribute("sessionUser", sessionUser);
         req.getRequestDispatcher("manager.jsp").forward(req, resp);
     }
 }

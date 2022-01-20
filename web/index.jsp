@@ -290,7 +290,7 @@
                 <a href="login.jsp">login</a>
             </li>
             <li class="nav-item">
-                <a href="allMenu.jsp">menu</a>
+                <a href="/allMenu">menu</a>
             </li>
             <li class="nav-item">
                 <a href="register.jsp"> register</a>

@@ -15,11 +15,11 @@ import java.util.List;
 
 public class AllMenuServlet extends HttpServlet {
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         MenuManager menuManager = new MenuManager();
-        Menu menu = new Menu();
-        List<Menu> getAllMenu = menuManager.getMenu();
-        req.setAttribute("menu", getAllMenu);
-        req.getRequestDispatcher("allMenu.jsp");
+        List<Menu> getMenus = menuManager.getMenu();
+        req.setAttribute("menu", getMenus);
+        req.getRequestDispatcher("allMenu.jsp").forward(req, resp);
+
     }
 }

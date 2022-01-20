@@ -1,4 +1,4 @@
-package manager;
+package db.manager;
 
 import db.DBConnectionProvider;
 import model.User;
@@ -12,10 +12,9 @@ public class UserManager {
     private Connection connection = DBConnectionProvider.getInstance().getConnection();
 
     public void addUser(User user) {
-        String query = "INSERT INTO `user` (`name`,`surname`,`email`,`password`) " +
-                "VALUES(?,?,?,?);";
+        String sql = "INSERT INTO user(`name`, `surname`, `email`, `password`)" + " VALUES(?,?,?,?);";
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getSurname());
             preparedStatement.setString(3, user.getEmail());
@@ -35,7 +34,7 @@ public class UserManager {
     }
 
     public void updateUser(User user) {
-        String sql = String.format("UPDATE user SET `name`='%s', surname='%s', email='%s', password='%s',userType='%s' WHERE id=" + user.getId(),
+        String sql = String.format("UPDATE user SET `name`='%s', surname='%s', email='%s', password='%s',type='%s' WHERE id=" + user.getId(),
                 user.getName(), user.getSurname(), user.getEmail(), user.getPassword(), user.getUserType().name());
         List<User> userList = new ArrayList<>();
         try {
@@ -98,7 +97,7 @@ public class UserManager {
     }
 
     public User getUserByPasswordAndEmail(String email, String password) {
-        String sql = "SELECT * FROM user WHERE email='" + email + "' and password = '" + password+"'";
+        String sql = "SELECT * FROM user WHERE email='" + email + "'AND password='" + password + "'";
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);

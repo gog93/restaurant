@@ -16,14 +16,16 @@
 <body>
 
 
+<li class="nav-item">
+    <a href="addMenu.jsp"> addMenu</a>
+</li>
 
 <form action="/logout" method="get">
     <a href="/">logOut</a>
 </form>
 
-<%List<Menu> menu=(List<Menu>) request.getAttribute("menu");%>
-<%List<User> user=(List<User>) request.getAttribute("user");%>
-<%List<BookATable> bookATables=(List<BookATable>) request.getAttribute("bookATable");%>
+<%List<User> user = (List<User>) request.getAttribute("user");%>
+<%List<BookATable> bookATable = (List<BookATable>) request.getAttribute("bookATable");%>
 
 <div>
     <div>
@@ -41,39 +43,37 @@
                 <th>name</th>
                 <th>surname</th>
             </tr>
-            <% for (User users:user){%>
+            <% for (User users : user) {%>
             <tr>
-                <td><%=users.getName()%></td>
-                <td><%=users.getSurname()%></td>
+                <td><%=users.getName()%>
+                </td>
+                <td><%=users.getSurname()%>
+                </td>
             </tr>
             <%}%>
         </table>
     </div>
     <br>
 
-<%--    <div>BOOKATABLE<br>--%>
-<%--        <table border="1">--%>
-<%--            <tr>--%>
-<%--                <th>number</th>--%>
-<%--                <th>date</th>--%>
-<%--                <th>userId</th>--%>
-<%--            </tr>--%>
-<%--            <% for (BookATable bookATable:bookATables){%>--%>
-<%--            <tr>--%>
-<%--                <td><%=bookATable.getNumber()%></td>--%>
-<%--                <td><%=bookATable.getDate()%></td>--%>
-<%--                <td><%=bookATable.getUser().getId()%></td>--%>
-<%--            </tr>--%>
-<%--            <%}%>--%>
-<%--        </table>--%>
-
-
-
-
-
-
+    <div>BOOKATABLE<br>
+        <table border="1">
+            <tr>
+                <th>number</th>
+                <th>date</th>
+                <th>userId</th>
+            </tr>
+            <% for (BookATable bookATables : bookATable) {%>
+            <tr>
+                <td><%=bookATables.getNumber()%>
+                </td>
+                <td><%=bookATables.getDate()%>
+                </td>
+                <td><%=bookATables.getUser()%>
+                </td>
+            </tr>
+            <%}%>
+        </table>
     </div>
-
 
 
 </div>

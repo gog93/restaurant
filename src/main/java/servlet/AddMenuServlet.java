@@ -16,7 +16,7 @@ import java.io.IOException;
 public class AddMenuServlet extends HttpServlet {
 
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User users = (User) req.getSession().getAttribute("user");
         String name = req.getParameter("name");
         String description = req.getParameter("description");
@@ -24,10 +24,10 @@ public class AddMenuServlet extends HttpServlet {
         menuManager.addMenu(Menu.builder()
                 .name(name)
                 .description(description)
-                .user(users)
+
                 .build());
         req.getSession().setAttribute("msg", "menu was added");
-        resp.sendRedirect("/manegerhome");
+        resp.sendRedirect("/managerHome");
 
     }
 }
