@@ -21,7 +21,7 @@ public class AddMenuServlet extends HttpServlet {
         String name = req.getParameter("name");
         String description = req.getParameter("description");
         MenuManager menuManager = new MenuManager();
-        menuManager.addMenu(Menu.builder()
+        menuManager.create(Menu.builder()
                 .name(name)
                 .description(description)
 

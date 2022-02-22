@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @WebServlet(urlPatterns = "/updateBookATable")
 
@@ -25,7 +24,7 @@ public class UpdateBookATable extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int bookATableId = Integer.parseInt(req.getParameter("id"));
-        BookATable book = bookAtableManager.getBookAtableById(bookATableId);
+        BookATable book = bookAtableManager.getById(bookATableId);
         req.setAttribute("bookATable", book);
         req.getRequestDispatcher("/WEB-INF/updateBookATable.jsp").forward(req, resp);
     }
@@ -35,7 +34,7 @@ public class UpdateBookATable extends HttpServlet {
         int bookId = Integer.parseInt(req.getParameter("id"));
         User user = (User) req.getSession().getAttribute("user");
 
-        BookATable bookById = bookAtableManager.getBookAtableById(bookId);
+        BookATable bookById = bookAtableManager.getById(bookId);
         if (bookById != null) {
 
             String number = req.getParameter("number");
@@ -47,7 +46,7 @@ public class UpdateBookATable extends HttpServlet {
                         .date(sdf.parse(date))
                         .user(user)
                         .build();
-                bookAtableManager.updateBook(bookATable);
+                bookAtableManager.update(bookATable);
 
             } catch (ParseException e) {
                 e.printStackTrace();

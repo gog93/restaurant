@@ -8,19 +8,20 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookAtableManager {
+public class BookAtableManager implements Manager<BookATable, Integer>{
     private Connection connection = DBConnectionProvider.getInstance().getConnection();
     private UserManager userManager = new UserManager();
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
-    public void addBookATable(BookATable bookATable) {
-        String query = "INSERT INTO `book_a_table` (`number`,`date`,`user_id`) " + "VALUES(?,?);";
+    public void create(BookATable bookATable) {
+        String query = "INSERT INTO `book_a_table` (`number`,`date`,`user_id`) " + "VALUES(?,?,?);";
         try {
 
             PreparedStatement pStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             pStatement.setString(1, bookATable.getNumber());
             pStatement.setString(2, sdf.format(bookATable.getDate()));
+            pStatement.setInt(3, bookATable.getUser().getId());
             pStatement.executeUpdate();
             ResultSet generatedKeys = pStatement.getGeneratedKeys();
             if (generatedKeys.next()) {
@@ -32,7 +33,7 @@ public class BookAtableManager {
         }
     }
 
-    public void updateBook(BookATable bookATable) {
+    public void update(BookATable bookATable) {
         try {
             Statement statement = connection.createStatement();
             String query = String.format("UPDATE book SET number = '%s', date = '%s' WHERE id=" + bookATable.getId(),
@@ -45,7 +46,7 @@ public class BookAtableManager {
 
     }
 
-    public List<BookATable> getBookATable() {
+    public List<BookATable> getAll() {
         String sql = "SELECT * from book_a_table";
         List<BookATable> result = new ArrayList<>();
         try {
@@ -56,7 +57,7 @@ public class BookAtableManager {
                         .id(resultSet.getInt(1))
                         .number(resultSet.getString(2))
                         .date(resultSet.getDate(3))
-                        .user(userManager.getUserById(resultSet.getInt(4)))
+                        .user(userManager.getById(resultSet.getInt(4)))
                         .build();
                 result.add(book);
             }
@@ -66,7 +67,7 @@ public class BookAtableManager {
         return result;
     }
 
-    public BookATable getBookAtableById(int id) {
+    public BookATable getById(Integer id) {
         String sql = "SELECT * FROM book_A_Table WHERE id=" + id;
         try {
             Statement statement = connection.createStatement();
@@ -75,8 +76,8 @@ public class BookAtableManager {
                 return BookATable.builder()
                         .id(resultSet.getInt(1))
                         .number(resultSet.getString(2))
-                        .date(resultSet.getDate(5))
-                        .user(userManager.getUserById(resultSet.getInt(7)))
+                        .date(resultSet.getDate(3))
+                        .user(userManager.getById(resultSet.getInt(4)))
                         .build();
             }
         } catch (SQLException throwables) {
@@ -85,7 +86,7 @@ public class BookAtableManager {
         return null;
     }
 
-    public void deleteBookATable(int id) {
+    public void delete(Integer id) {
         String sql = "DELETE from book_a_Table where id = " + id;
         try {
             Statement statement = connection.createStatement();

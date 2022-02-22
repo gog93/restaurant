@@ -8,10 +8,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserManager {
+public class UserManager implements Manager<User, Integer> {
     private Connection connection = DBConnectionProvider.getInstance().getConnection();
 
-    public void addUser(User user) {
+    public void create(User user) {
         String query = "INSERT INTO `user` (`name`,`surname`,`email`,`password`) " +
                 "VALUES(?,?,?,?);";
         try {
@@ -34,7 +34,7 @@ public class UserManager {
 
     }
 
-    public void updateUser(User user) {
+    public void update(User user) {
         String sql = String.format("UPDATE user SET `name`='%s', surname='%s', email='%s', password='%s',userType='%s' WHERE id=" + user.getId(),
                 user.getName(), user.getSurname(), user.getEmail(), user.getPassword(), user.getUserType().name());
         List<User> userList = new ArrayList<>();
@@ -47,7 +47,9 @@ public class UserManager {
 
     }
 
-    public List<User> getUsers() {
+
+
+    public List<User> getAll() {
         String sql = "SELECT * FROM user";
         List<User> result = new ArrayList<>();
 
@@ -74,7 +76,9 @@ public class UserManager {
         return result;
     }
 
-    public User getUserById(int id) {
+
+
+    public User getById(Integer id) {
         String sql = "SELECT * FROM user WHERE id=" + id;
         try {
             Statement statement = connection.createStatement();
@@ -85,9 +89,8 @@ public class UserManager {
                         .name(resultSet.getString(2))
                         .surname(resultSet.getString(3))
                         .email(resultSet.getString(4))
-                        .password(resultSet.getString(5))
-                        .userType(UserType.valueOf(resultSet.getString(6)))
-
+                        .userType(UserType.valueOf(resultSet.getString(5)))
+                        .password(resultSet.getString(6))
                         .build();
             }
         } catch (SQLException throwables) {
@@ -97,7 +100,7 @@ public class UserManager {
 
     }
 
-    public User getUserByPasswordAndEmail(String email, String password) {
+    public User getByPasswordAndEmail(String email, String password) {
         String sql = "SELECT * FROM user WHERE email='" + email + "' and password = '" + password+"'";
         try {
             Statement statement = connection.createStatement();
@@ -108,8 +111,8 @@ public class UserManager {
                         .name(resultSet.getString(2))
                         .surname(resultSet.getString(3))
                         .email(resultSet.getString(4))
-                        .password(resultSet.getString(6))
                         .userType(UserType.valueOf(resultSet.getString(5)))
+                        .password(resultSet.getString(6))
                         .build();
             }
         } catch (SQLException throwables) {
@@ -120,7 +123,7 @@ public class UserManager {
     }
 
 
-    public void deleteUser(int id) {
+    public void delete(Integer id) {
         String sql = "DELETE FROM user WHERE id=" + id;
         try {
             Statement statement = connection.createStatement();

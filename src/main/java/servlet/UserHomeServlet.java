@@ -26,8 +26,8 @@ public class UserHomeServlet extends HttpServlet {
         BookAtableManager bookATableManager = new BookAtableManager();
         MenuManager menuManager = new MenuManager();
         BookATable bookATable = new BookATable();
-        BookATable allBookAtableById = bookATableManager.getBookAtableById(users.getId());
-        List<Menu> allMenu = menuManager.getMenu();
+        BookATable allBookAtableById = bookATableManager.getById(users.getId());
+        List<Menu> allMenu = menuManager.getAll();
         req.setAttribute("menu", allMenu);
         req.setAttribute("bookATable", allBookAtableById);
         req.getRequestDispatcher("/user.jsp").forward(req, resp);

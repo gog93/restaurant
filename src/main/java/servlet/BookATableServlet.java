@@ -1,7 +1,6 @@
 package servlet;
 
 import manager.BookAtableManager;
-import manager.UserManager;
 import model.BookATable;
 import model.User;
 
@@ -13,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.util.Date;
 
 @WebServlet(urlPatterns = "/bookATable")
 
@@ -35,7 +32,7 @@ public class BookATableServlet extends HttpServlet {
                     .date(sdf.parse(date))
                     .user(user)
                     .build();
-            bookAtableManager.addBookATable(bookATable);
+            bookAtableManager.create(bookATable);
 
         } catch (ParseException e) {
             e.printStackTrace();

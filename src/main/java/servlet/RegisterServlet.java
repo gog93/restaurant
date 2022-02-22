@@ -29,7 +29,7 @@ public class RegisterServlet extends HttpServlet {
                 .email(email)
                 .password(password)
                 .build();
-        userManager.addUser(user);
+        userManager.create(user);
         req.getSession().setAttribute("msg", "user was register successfully");
         resp.sendRedirect("/");
     }

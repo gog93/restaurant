@@ -9,11 +9,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuManager {
+public class MenuManager implements Manager<Menu, Integer> {
 
     private Connection connection = DBConnectionProvider.getInstance().getConnection();
 
-    public void addMenu(Menu menu) {
+    public void create(Menu menu) {
         String query = "INSERT INTO `menu` (`name`,`description`) " +
                 "VALUES(?,?);";
         try {
@@ -32,7 +32,7 @@ public class MenuManager {
         }
     }
 
-    public void updateMenu(Menu menu) {
+    public void update(Menu menu) {
         try {
             Statement statement = connection.createStatement();
             String query = String.format("UPDATE user SET name = '%s', description = '%s' WHERE id=" + menu.getId(),
@@ -44,7 +44,7 @@ public class MenuManager {
         }
     }
 
-    public List<Menu> getMenu() {
+    public List<Menu> getAll() {
         String sql = "SELECT * from menu" ;
         List<Menu> result = new ArrayList<>();
         try {
@@ -64,7 +64,9 @@ public class MenuManager {
         return result;
     }
 
-    public void deleteBookATable(int id) {
+
+
+    public void delete(Integer id) {
         String sql = "DELETE from menu where id = " + id;
         try {
             Statement statement = connection.createStatement();
@@ -72,6 +74,10 @@ public class MenuManager {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+    @Override
+    public Menu getById(Integer id) {
+        return null;
     }
 
 

@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.net.HttpCookie;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/managerHome")
@@ -29,9 +28,9 @@ public class ManagerHomeServlet extends HttpServlet {
         UserManager userManager = new UserManager();
         User users = new User();
         BookAtableManager bookAtableManager = new BookAtableManager();
-        List<User> getAllUser = userManager.getUsers();
-        List<BookATable> getAllBookATable = bookAtableManager.getBookATable();
-        List<Menu> getAllMenu = menuManager.getMenu();
+        List<User> getAllUser = userManager.getAll();
+        List<BookATable> getAllBookATable = bookAtableManager.getAll();
+        List<Menu> getAllMenu = menuManager.getAll();
         req.setAttribute("user", getAllUser);
         req.setAttribute("bookATable", getAllBookATable);
         req.setAttribute("menu", getAllMenu);

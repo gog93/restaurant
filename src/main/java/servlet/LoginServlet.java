@@ -19,7 +19,7 @@ public class LoginServlet extends HttpServlet {
         UserManager userManager = new UserManager();
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        User user = userManager.getUserByPasswordAndEmail(email, password);
+        User user = userManager.getByPasswordAndEmail(email, password);
         if (user == null) {
             req.getSession().setAttribute("msg", "wrong email or password ");
             resp.sendRedirect("login.jsp");
